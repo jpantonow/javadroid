@@ -1,6 +1,7 @@
 package com.example.javadroids.db;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -53,5 +54,17 @@ public class DbHelper extends SQLiteOpenHelper{
         } else{
             Toast.makeText(context,"Success",Toast.LENGTH_SHORT).show();
         }
+    }
+    public Cursor read_data(){
+        String query  = "SELECT * FROM" + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db!=null){
+            db.rawQuery(query,null);
+        }
+        return cursor;
+    }
+    public void display_data(){
+
     }
 }
